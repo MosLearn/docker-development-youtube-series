@@ -4,10 +4,8 @@ metadata:
   name: example-ingress
   namespace: example-app
   annotations:
-                                          
+    kubernetes.io/ingress.class: "nginx"  # Remplacez cela par la classe d'ingress appropriée
     nginx.ingress.kubernetes.io/rewrite-target: /
-                                                              
-                                                             
 spec:
   rules:
   - host: example-service.com
@@ -19,4 +17,4 @@ spec:
           service:
             name: example-service
             port:
-              number: 5000
+              number: 80  # Assurez-vous que le numéro du port correspond à celui de votre service
