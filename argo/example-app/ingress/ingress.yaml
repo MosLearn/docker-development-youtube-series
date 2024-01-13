@@ -1,19 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-service
-  namespace: example-app
+  name: argocd-server-http
+						
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: contour-internal
+    ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   rules:
-  - host: example-service.com
+  - host: http://127.0.0.1:5000/
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: example-service
+            name: argocd-server
             port:
-              number: 80
+              name: http
+  tls:
+  - hosts:
+    - http://127.0.0.1:5000/
