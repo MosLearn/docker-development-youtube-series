@@ -1,21 +1,22 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: example-service
-						
+  name: example-ingress
+  namespace: example-app
   annotations:
-    kubernetes.io/ingress.class: "traefik"
-    traefik.ingress.kubernetes.io/frontend-entry-points: http,https
-    #traefik.ingress.kubernetes.io/redirect-entry-point: https
-    #traefik.ingress.kubernetes.io/redirect-permanent: "true"
+                                          
+    nginx.ingress.kubernetes.io/rewrite-target: /
+                                                              
+                                                             
 spec:
   rules:
-  - host: mus.test
+  - host: example-service.com
     http:
       paths:
       - path: /
-						
+        pathType: Prefix
         backend:
-				  
-          serviceName: example-service
-          servicePort: 80  
+          service:
+            name: example-service
+            port:
+              number: 5000
