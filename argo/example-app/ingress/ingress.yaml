@@ -1,5 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
+controller:
+  ingressClass: "nginx"
 metadata:
   name: example-ingress
   namespace: example-app
