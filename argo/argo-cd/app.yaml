@@ -16,7 +16,7 @@ spec:
     namespace: example-app
   syncPolicy:
     syncOptions:
-    - CreateNamespace=false
+    - CreateNamespace=true
     automated:
-      prune: false
-      selfHeal: false
+      prune: true
+      selfHeal: true
