@@ -1,25 +1,19 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/rewrite-target: /   #new 
-  name: example-app
+  name: example-ingress
   namespace: example-app
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  tls:
-  - hosts:
-    - mos.com
-    secretName: mos-tls-secret
   rules:
-  - host: marcel.test
+  - host: example-service.com
     http:
       paths:
-      - path: /v1/hello
+      - path: /
+        pathType: Prefix
         backend:
-          serviceName: example-service
-          servicePort: 80
-      - path: /v2/hello
-        backend:
-          serviceName: example-service
-          servicePort: 80
+          service:
+            name: example-service
+            port:
+              number: 80
