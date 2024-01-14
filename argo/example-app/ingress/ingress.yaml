@@ -4,9 +4,9 @@ metadata:
   name: example-service
 	  
 spec:
-  ingressClassName: nginx
+  ingressClassName: example-app
   rules:
-  - host: public.example-service.com
+  - host: mos.com
     http:
       paths:
       - path: /
