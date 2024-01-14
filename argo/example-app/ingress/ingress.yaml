@@ -1,18 +1,19 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: example-service
-	  
+  name: example-ingress
+  annotations:
+    example-app.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "example-app"
 spec:
-  ingressClassName: example-app
   rules:
   - host: mos.com
     http:
       paths:
-      - path: /
-        pathType: Prefix
-        backend:
+      - backend:
           service:
             name: example-service
-            port:
-              number: 80
+            port: 
+              number: 5000
+        path: /example
+        pathType: Exact
