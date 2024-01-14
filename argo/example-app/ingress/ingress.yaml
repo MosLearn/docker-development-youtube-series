@@ -9,10 +9,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - mos.com
-    secretName: mos-tls-secret
+    - marcel.test
+    secretName: marcel-tls-secret
   rules:
-  - host: mos.com
+  - host: marcel.test
     http:
       paths:
       - path: /v1/hello
