@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: example-app
-        image: moslearn/demo-app:python-app-2.0
+        image: moslearn/my-flask-app:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
