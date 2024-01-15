@@ -1,19 +1,19 @@
-kubectlapiVersion: networking.k8s.io/v1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: example-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
-    kubernetes.io/ingress.class: "nginx"
+    example-app.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "example-app"
 spec:
   rules:
-  - host: app-test.com
-    http:
-      paths:
-      - backend:
-          service:
-            name: example-service
-            port: 
-              number: 5000
-        path: /my-app
-        pathType: Exact
+    - host: example-app.com
+      http:
+        paths:
+          - backend:
+              service:
+                name: example-service
+                port:
+                  number: 5000
+                path: /v1
+                pathType: Exact
