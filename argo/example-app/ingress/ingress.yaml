@@ -17,3 +17,9 @@ spec:
                   number: 5000
             path: /
             pathType: Prefix
+            path: "/flask"
+            backend:
+              service:
+                name: example-service
+                port:
+                  number: 5000
