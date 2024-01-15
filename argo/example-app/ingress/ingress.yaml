@@ -15,3 +15,5 @@ spec:
                 name: example-service
                 port:
                   number: 5000
+            path: /flask
+            pathType: Exact
