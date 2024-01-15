@@ -15,5 +15,5 @@ spec:
                 name: example-service
                 port:
                   number: 5000
-            path: 
-            pathType: Exact
+            path: /
+            pathType: Prefix
